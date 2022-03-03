@@ -41,9 +41,10 @@ namespace SimpleAvatarInfo.gui
         public static void ShowInputPopupWithCancel(this VRCUiPopupManager popupManager, string title, string preFilledText,
            InputField.InputType inputType, bool useNumericKeypad, string submitButtonText,
            Action<string, Il2CppSystem.Collections.Generic.List<KeyCode>, Text> submitButtonAction,
+
            Action cancelButtonAction, string placeholderText = "Enter text....")
         {
-            popupManager.Method_Public_Void_String_String_InputType_Boolean_String_Action_3_String_List_1_KeyCode_Text_Action_String_Boolean_Action_1_VRCUiPopup_Boolean_Int32_1(
+            popupManager.Method_Public_Void_String_String_InputType_Boolean_String_Action_3_String_List_1_KeyCode_Text_Action_String_Boolean_Action_1_VRCUiPopup_Boolean_Int32_0(
                     title,
                     preFilledText,
                     inputType, useNumericKeypad, submitButtonText, submitButtonAction, cancelButtonAction, placeholderText, true, null);
@@ -157,6 +158,17 @@ namespace SimpleAvatarInfo.gui
             {
                 MelonLogger.Msg("Downloading avatar..");
                 Downloader(avatarURL, avatarName, downloadlocal);
+
+            }), null);
+        }
+         
+        // displays download avatars info
+        public static void DownloadComplete(string avatarinfo, string avatarURL, string avatarName, string downloadlocal, double time)
+        {
+            // Warning message for cloning a private avatar
+            VRCUiPopupManager.prop_VRCUiPopupManager_0.Method_Public_Void_String_String_String_Action_Action_1_VRCUiPopup_0("Download Complete!", avatarinfo, "Time taken"+time, new Action(() =>
+            {
+                MelonLogger.Msg("Done downloading..");
 
             }), null);
         }
@@ -291,6 +303,8 @@ namespace SimpleAvatarInfo.gui
 
             MelonLogger.Warning("It took about" + " " + elapsedTime + " " + " to download the avatar " + aviname + "\n");
             MelonLogger.Msg("Done Downloading File named" + " " + aviPath + @"\" + aviname + ".vrca");
+
+           
             
         }
             // Avatar uwu

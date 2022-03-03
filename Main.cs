@@ -197,6 +197,7 @@ public override void OnFixedUpdate() // Can run multiple times per frame. Mostly
 
             MelonCoroutines.Start(gui.OnMainTitleRun("Nicky's Mod Loaded.."));
             MelonCoroutines.Start(gui.OnLeftWingTitle("text In left wing~...."));
+            MelonCoroutines.Start(gui.CreateTestNotification());
 
             // Wing Gui Button's 
             MelonCoroutines.Start(gui.OnFirstButtonTitle());

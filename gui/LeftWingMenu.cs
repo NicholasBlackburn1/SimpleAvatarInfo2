@@ -21,6 +21,27 @@ namespace SimpleAvatarInfo.gui
     class LeftWingMenu
     {
 
+        public IEnumerator CreateTestNotification()
+        {
+            while (GameObject.Find("UserInterface").GetComponentInChildren<VRC.UI.Elements.QuickMenu>(true) == null) yield return null;
+
+                // creats base cavas
+                GameObject newCanvas = new GameObject("blackburn");
+                Canvas c = newCanvas.AddComponent<Canvas>();
+
+                c.renderMode = RenderMode.ScreenSpaceOverlay;
+                newCanvas.AddComponent<CanvasScaler>();
+                newCanvas.AddComponent<GraphicRaycaster>();
+
+                GameObject panel = new GameObject("blackburn/panal");
+
+                panel.AddComponent<CanvasRenderer>();
+                Image i = panel.AddComponent<Image>();
+                i.color = Color.red;
+
+                panel.transform.SetParent(newCanvas.transform, false);
+                panel.transform.SetPositionAndRotation(new Vector3((float)162.5,585,0), Quaternion.identity);
+        }
 
         public IEnumerator OnMainTitleRun(string message)
         {
