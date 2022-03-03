@@ -20,9 +20,11 @@ namespace SimpleAvatarInfo.gui
 {
     class LeftWingMenu
     {
-
+        // this is for the log info
         public IEnumerator CreateTestNotification()
         {
+            MelonLogger.Log("Creating Basic layout area... for messages..");
+
             while (GameObject.Find("UserInterface").GetComponentInChildren<VRC.UI.Elements.QuickMenu>(true) == null) yield return null;
 
                 // creats base cavas
@@ -39,8 +41,13 @@ namespace SimpleAvatarInfo.gui
                 Image i = panel.AddComponent<Image>();
                 i.color = Color.red;
 
+            // this sets the pos and the parent of the background color 
+
                 panel.transform.SetParent(newCanvas.transform, false);
-                panel.transform.SetPositionAndRotation(new Vector3((float)162.5,585,0), Quaternion.identity);
+                panel.transform.localScale= new Vector3(20,10,20);
+                panel.transform.SetPositionAndRotation(new Vector3(-950, (float)480.5, 0), Quaternion.identity);
+
+            MelonLogger.Log("created Area......");
         }
 
         public IEnumerator OnMainTitleRun(string message)
